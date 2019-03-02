@@ -1,0 +1,47 @@
+
+
+<section class="container" style="margin-top: 25px">
+
+  <div class="row">
+
+    <mat-card class="col-md-12">
+        <div class="row justify-content-between" style="width: 100%">
+
+                  <button class="mat-raised-button mat-primary" color="primary" (click)="partyPlay('1');" style="padding-top: 5px;">
+                    <mat-icon>play_circle_outline</mat-icon>
+                  </button>
+                  <button class="mat-raised-button mat-primary" color="primary" (click)="mp3Pause();" style="padding-top: 5px;">
+                    <mat-icon>pause_circle_outline</mat-icon>
+                  </button>
+                  <button class="mat-raised-button mat-primary" color="primary" (click)="mp3Next();" style="padding-top: 5px;">
+                    <mat-icon>skip_next</mat-icon>
+                  </button>
+                  <button class="mat-raised-button mat-primary" color="primary" (click)="mp3Stop()" style="padding-top: 5px;">
+                    <mat-icon>stop</mat-icon>
+                  </button>
+
+
+        </div>
+    </mat-card>
+  </div>
+
+  <div class="row" *ngFor="let zone of audioZones" style="padding-top: 10px;">
+
+    <mat-card class="col-md-12">
+      <div class="row justify-content-between" style="width: 100%; padding-left: 10px;">
+        <mat-checkbox class="example-margin" [value]="zone.zoneId">{{zone.name}}</mat-checkbox>
+        <mat-slide-toggle [checked]="zone.power" (change)="togglePower( $event , zone.zoneId );" > </mat-slide-toggle>
+        <mat-slider thumbLabel min="0" max="60" step="1" value="20" [(value)]="zone.volume" (change)="setVolume($event,  zone.zoneId );"></mat-slider>
+        <mat-form-field>
+          <mat-select placeholder="Playing"  name="source" [value]="zone.source" (selectionChange)="setSource( $event, zone.zoneId ); ">
+            <mat-option *ngFor="let input of zoneInputs" [value]="input.id">
+              {{input.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+    </mat-card>
+  </div>
+
+</section>

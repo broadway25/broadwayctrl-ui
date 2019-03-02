@@ -1,0 +1,21 @@
+<header>
+  <!--<mat-toolbar color="primary" class="justify-content-center">Smart Home Control</mat-toolbar>-->
+</header>
+
+<section class="container">
+  <mat-toolbar >
+    <a [routerLink]="['audio-home']" routerLinkActive="active-route" ><div><span>Audio System</span></div></a>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="navbar-fill-space"></span>
+
+    <a [routerLink]="['switch-home']" routerLinkActive="active-route"><div><span>Smart Switch</span></div> </a>
+  </mat-toolbar>
+  <div class="row">
+    <div class="col-md-12"><router-outlet></router-outlet></div>
+  </div>
+</section>
+
+<footer></footer>
+
+
